@@ -64,6 +64,7 @@ exec --no-startup-id nitrogen --restore
 #feh --bg-scale ~/Pictures/Wallpapers/Nord_Nord_Wallpaper_Pack-1901187.jpg #background
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh #polybar
 exec --no-startup-id compton -b # compton renderer (transparan yapmak icin)
+exec --no-startup-id $HOME/.config/i3/i3-alternating-layout/alternating_layouts.py # otomatik layout python ile calisiyor
 # kill focused window
 bindsym $mod+Shift+q kill
 
