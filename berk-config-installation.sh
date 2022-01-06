@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "Installation script will be here xd"
+echo "Installing Necessary Packages"
+pacman -S compton python
