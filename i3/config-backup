@@ -17,7 +17,7 @@ set $mod Mod4
 # font hack 8
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:System San Francisco Display 10
+font pango:System San Francisco Display 12
 # for_window [class=".*"] title_format "<span alpha='1'>%title</span>"
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -45,24 +45,14 @@ floating_modifier $mod
 #bindsym $mod+Return exec i3-sensible-terminal
 # berkg0d settings
 
-# Pencerelerin Title Barlari kapali olmak zorunda. Paddingler icin.
-for_window [class=".*"] border pixel 0
 
 # Window Settings
 
-#for_window [all] title_window_icon on
-#for_window [all] title_window_icon padding 5px
-
+for_window [all] title_window_icon on
+for_window [all] title_window_icon padding 5px
 #for_window [all] border none
 
-# padding for windows
-gaps inner 10
-gaps outer 10
-gaps horizontal 10
-gaps vertical 10
-
-smart_borders on
-# Dual Monitor Setup 144Hz - Make Primary Monitor 2
+# Dual Monitor Setup 144Hz
 exec_always xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x44 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --primary --mode 1920x1080 --rate 144 --pos 0x0 --rotate normal
 
 # berkg0d hotkeys
@@ -72,24 +62,19 @@ bindsym $mod+E exec nautilus
 bindsym $mod+T exec alacritty
 bindsym $mod+S exec spotify
 bindsym $mod+M exec thunderbird
-bindsym $mod+r exec --no-startup-id dmenu_run
+bindsym $mod+r exec --no-startup-id dmenu_run # Dmenu
 bindsym $mod+Escape exec xkill
 # Screenshoot
 # Multi-screen screenshots with scrot
-
-#bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
+bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
 # OSX-like area selection screenshots
-
-#bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
 
 # berkg0d settings
-
-# Autostart Apps
-exec --no-startup-id spectacle
 exec --no-startup-id nitrogen --restore
-exec_always --no-startup-id /home/berk/.config/polybar/launch.sh --hack
-exec --no-startup-id compton -b
-exec_always --no-startup-id $HOME/.config/i3/i3-alternating-layout/alternating_layouts.py
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh #polybar
+exec --no-startup-id compton -b # compton renderer (transparan yapmak icin)
+exec_always --no-startup-id $HOME/.config/i3/i3-alternating-layout/alternating_layouts.py # otomatik layout python ile calisiyor
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
@@ -224,6 +209,26 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-#bar {
-#	status_command i3status
-#}
+bar {
+	status_command i3status
+	position bottom	
+	id 1
+	tray_padding 0
+	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+    	font pango:System San Francisco Display 10
+	separator_symbol ":|:"
+	workspace_buttons yes
+	
+	i3bar_command i3bar --transparency
+	colors {
+	        background #000000
+        	statusline #ffffff
+        	separator #666666
+
+        	focused_workspace  #4c7899 #285577 #ffffff
+        	active_workspace   #333333 #5f676a #ffffff
+        	inactive_workspace #333333 #222222 #888888
+        	urgent_workspace   #2f343a #900000 #ffffff
+        	binding_mode       #2f343a #900000 #ffffff
+	}
+}
