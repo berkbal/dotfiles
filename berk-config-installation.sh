@@ -11,6 +11,7 @@ echo "Polybar Themes: https://github.com/adi1090x/polybar-themes"
 cp -r alacritty ~/.config/
 cp -r i3 ~/.config/
 cp -r nvim ~/.config/
+cp -r polybar ~/.config/
 
 cp .bash_profile ~/
 cp .bashrc ~/
