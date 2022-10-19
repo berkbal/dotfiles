@@ -14,10 +14,10 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 8
-# font hack 8
+  font cantarell 8
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:System San Francisco Display 10
+# font pango:System San Francisco Display 12 
 # for_window [class=".*"] title_format "<span alpha='1'>%title</span>"
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -31,6 +31,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 # Bluetooth Applet yav
 exec --no-startup-id blueman-applet
+exec --no-startup-id gnome-keyring-daemon -s
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -44,36 +45,42 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 # berkg0d settings
+exec --no-startup-id dbus-update-activation-environment --all
 
-# Pencerelerin Title Barlari kapali olmak zorunda. Paddingler icin.
-for_window [class=".*"] border pixel 0
+# Pencerelerin Border Ayari. Set edilmek zorunda.
+for_window [class=".*"] border pixel 2
 
 # Window Settings
 
-#for_window [all] title_window_icon on
-#for_window [all] title_window_icon padding 5px
+for_window [all] title_window_icon on
+#for_window [all] title_window_icon padding 25px
+
+# Pencerelerin cercevelerini acip kapatir.
 
 #for_window [all] border none
 
-# padding for windows
-gaps inner 10
-gaps outer 10
-gaps horizontal 10
-gaps vertical 10
-
+# pencereleri sekilli yaptirgac
+gaps inner 15
+gaps outer 15
+gaps horizontal 15
+gaps vertical 15
+smart_gaps on
 smart_borders on
-# Dual Monitor Setup 144Hz - Make Primary Monitor 2
-exec_always xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x44 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --primary --mode 1920x1080 --rate 144 --pos 0x0 --rotate normal
+smart_borders no_gaps
 
-# berkg0d hotkeys
+# Cift Monitor Setup 144Hz - Oncelikli monitoru monitor 2 yapiyor
+exec_always xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x44 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-1 --primary --mode 1920x1080 --rate 120 --pos 0x0 --rotate normal
 
-bindsym $mod+F exec brave
-bindsym $mod+E exec nautilus
-bindsym $mod+T exec alacritty
-bindsym $mod+S exec spotify
-bindsym $mod+M exec thunderbird
-bindsym $mod+r exec --no-startup-id dmenu_run
-bindsym $mod+Escape exec xkill
+# h0tk3yz
+bindsym $mod+F exec --no-startup-id firefox
+bindsym $mod+E exec --no-startup-id nautilus
+bindsym $mod+T exec --no-startup-id alacritty
+bindsym $mod+S exec --no-startup-id spotify
+bindsym $mod+M exec --no-startup-id thunderbird
+bindsym $mod+r exec --no-startup-id rofi -show run
+bindsym $mod+g exec --no-startup-id steam
+bindsym $mod+p exec --no-startup-id stacer
+# Gnome Keyring'in calismasi icin
 # Screenshoot
 # Multi-screen screenshots with scrot
 
@@ -83,7 +90,7 @@ bindsym $mod+Escape exec xkill
 #bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
 
 # berkg0d settings
-
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 # Autostart Apps
 exec --no-startup-id spectacle
 exec --no-startup-id nitrogen --restore
@@ -131,7 +138,6 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-#bindsym $mod+f fullscreen toggle
 bindsym shift+$mod+w fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym ctrl+shift+$mod+s layout stacking
@@ -227,3 +233,5 @@ mode "resize" {
 #bar {
 #	status_command i3status
 #}
+
+bindsym button3 exec --no-startup-id jgmenu --at-pointer
