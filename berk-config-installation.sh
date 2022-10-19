@@ -2,7 +2,7 @@
 
 echo "Installing Necessary Packages"
 pacman -Syu
-pacman -S compton python git pavucontrol thunar alacritty syslog-ng cronie
+pacman -S compton python git pavucontrol thunar alacritty syslog-ng cronie firefox stacer
 
 echo "Polybar theme should be installed manually"
 echo "Polybar Themes: https://github.com/adi1090x/polybar-themes"
@@ -17,4 +17,3 @@ cp .bashrc ~/
 cp xinitrc ~/
 
 cp compton.conf ~/.config
-
