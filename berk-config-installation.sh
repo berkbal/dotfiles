@@ -1,8 +1,12 @@
 #!/bin/bash
 
 echo "Installing Necessary Packages"
-pacman -Syu
-pacman -S compton python python-i3ipc git pavucontrol nautilus alacritty syslog-ng cronie firefox neofetch nvim vim rofi nitrogen wget curl polybar
+sudo pacman -Syu
+sudo pacman -S compton python python-i3ipc git pavucontrol nautilus alacritty syslog-ng cronie firefox neofetch nvim vim rofi nitrogen wget curl polybar gdm
+
+mkdir ~/Downloads
+mkdir ~/Workspace
+mkdir ~/Pictures
 
 # Copy Process
 cp -r alacritty ~/.config/
