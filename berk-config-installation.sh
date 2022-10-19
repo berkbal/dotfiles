@@ -2,7 +2,7 @@
 
 echo "Installing Necessary Packages"
 pacman -Syu
-pacman -S compton python git pavucontrol nautilus alacritty syslog-ng cronie firefox stacer neofetch nvim vim rofi yay
+pacman -S compton python git pavucontrol nautilus alacritty syslog-ng cronie firefox stacer neofetch nvim vim rofi
 
 echo "Polybar theme should be installed manually"
 echo "Polybar Themes: https://github.com/adi1090x/polybar-themes"
