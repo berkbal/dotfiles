@@ -14,6 +14,5 @@ cp -r nvim ~/.config/
 
 cp .bash_profile ~/
 cp .bashrc ~/
-cp xinitrc ~/
 
 cp compton.conf ~/.config
