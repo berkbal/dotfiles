@@ -6,7 +6,8 @@ alias en="setxkbmap us"
 alias ka="killall"
 alias vim="nvim"
 alias ls='ls --color=auto'
-
+alias exploit='searchsploit'
+	
 # Startup Commands
 pfetch
 
