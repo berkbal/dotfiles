@@ -2,7 +2,7 @@
 
 echo "Installing Necessary Packages"
 sudo pacman -Syu
-sudo pacman -S compton python python-i3ipc git pavucontrol nautilus alacritty syslog-ng cronie pfetch neovim vim rofi nitrogen wget curl polybar keychain
+sudo pacman -S compton python python-i3ipc git pavucontrol nautilus alacritty syslog-ng cronie pfetch neovim vim rofi nitrogen wget curl polybar keychain waybar
 
 mkdir ~/Downloads
 mkdir ~/Workspace
@@ -13,6 +13,7 @@ cp -r alacritty ~/.config/
 cp -r i3 ~/.config/
 cp -r nvim ~/.config/
 cp -r polybar ~/.config/
+cp -r hypr ~/.config/
 
 cp .bash_profile ~/
 cp .bashrc ~/
