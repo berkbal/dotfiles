@@ -2,7 +2,7 @@
 
 echo "Installing Necessary Packages"
 sudo pacman -Syu
-sudo pacman -S compton python python-i3ipc git pavucontrol nautilus alacritty syslog-ng cronie pfetch neovim vim rofi nitrogen wget curl polybar keychain waybar hyprpaper
+sudo pacman -S compton python python-i3ipc git pavucontrol nautilus alacritty syslog-ng cronie pfetch neofetch neovim vim rofi nitrogen wget curl polybar keychain waybar hyprpaper kitty bluez blueman
 
 mkdir ~/Downloads
 mkdir ~/Workspace
@@ -24,4 +24,5 @@ echo "Settings copied."
 echo "Suggested Steps:
      - Install Yay
      - Install Stacer
+     - Enable Bluetooth
 "
