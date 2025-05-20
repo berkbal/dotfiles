@@ -22,6 +22,7 @@ packages=(
   keychain
   waybar
   hyprpaper
+  hyprlock
   kitty
   bluez
   blueman
