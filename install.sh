@@ -27,8 +27,10 @@ packages=(
   bluez
   blueman
   exa
+  grim 
+  slurp 
+  wl-clipboard
 )
-
 function make_dirs(){
      echo "Creating Necessary Directories"
 
