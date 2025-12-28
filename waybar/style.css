@@ -1,9 +1,13 @@
+/* ============================================
+   WAYBAR THEME - Modern Dark
+   ============================================ */
+
 * {
     border: none;
     border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Liberation Mono;
-    min-height: 20px;
+    font-family: "MesloLGS Nerd Font", "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
+    min-height: 0;
 }
 
 window#waybar {
@@ -14,213 +18,194 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+tooltip {
+    background: #1e1e2e;
+    border: 1px solid #45475a;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #cdd6f4;
+}
+
+/* ============================================
+   WORKSPACES
+   ============================================ */
+
 #workspaces {
-    margin-right: 8px;
-    border-radius: 10px;
-    transition: none;
-    background: #383c4a;
+    background: linear-gradient(135deg, #1e1e2e 0%, #313244 100%);
+    border-radius: 12px;
+    margin: 5px;
+    padding: 0 4px;
 }
 
 #workspaces button {
-    transition: none;
-    color: #7c818c;
+    color: #6c7086;
     background: transparent;
-    padding: 5px;
-    font-size: 18px;
+    padding: 4px 8px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
-#workspaces button.persistent {
-    color: #7c818c;
-    font-size: 12px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-radius: inherit;
-    color: #383c4a;
-    background: #7c818c;
+    color: #f5c2e7;
+    background: rgba(245, 194, 231, 0.1);
 }
 
-#workspaces button.focused {
-    color: white;
+#workspaces button.active {
+    color: #1e1e2e;
+    background: linear-gradient(135deg, #89b4fa 0%, #b4befe 100%);
+    font-weight: bold;
 }
 
-#language {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+#workspaces button.urgent {
+    color: #1e1e2e;
+    background: #f38ba8;
 }
 
-#keyboard-state {
-    margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+/* ============================================
+   WINDOW TITLE
+   ============================================ */
+
+#window {
+    color: #cdd6f4;
+    background: linear-gradient(135deg, #1e1e2e 0%, #313244 100%);
+    border-radius: 12px;
+    margin: 5px;
+    padding: 4px 16px;
 }
 
-#custom-pacman {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+#window.empty {
+    background: transparent;
 }
 
-#custom-mail {
-    margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#mode {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#clock {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
+/* ============================================
+   WEATHER
+   ============================================ */
 
 #custom-weather {
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    color: #f9e2af;
+    background: linear-gradient(135deg, #1e1e2e 0%, #313244 100%);
+    border-radius: 12px;
+    margin: 5px;
+    padding: 4px 16px;
 }
 
+/* ============================================
+   CLOCK
+   ============================================ */
+
+#clock {
+    color: #cdd6f4;
+    background: linear-gradient(135deg, #1e1e2e 0%, #313244 100%);
+    border-radius: 12px;
+    margin: 5px;
+    padding: 4px 16px;
+    font-weight: bold;
+}
+
+/* ============================================
+   RIGHT MODULES CONTAINER STYLE
+   ============================================ */
+
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#custom-vpn,
+#tray {
+    background: linear-gradient(135deg, #1e1e2e 0%, #313244 100%);
+    border-radius: 12px;
+    margin: 5px 3px;
+    padding: 4px 12px;
+}
+
+/* ============================================
+   NETWORK
+   ============================================ */
+
+#network {
+    color: #94e2d5;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#network.wifi {
+    color: #89b4fa;
+}
+
+/* ============================================
+   PULSEAUDIO
+   ============================================ */
+
 #pulseaudio {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    color: #fab387;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    color: #6c7086;
+    background: linear-gradient(135deg, #1e1e2e 0%, #45475a 100%);
 }
 
-#custom-mem {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+/* ============================================
+   CPU
+   ============================================ */
+
+#cpu {
+    color: #a6e3a1;
 }
 
-#temperature {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+/* ============================================
+   MEMORY
+   ============================================ */
+
+#memory {
+    color: #cba6f7;
 }
 
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#backlight {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #ffbe61;
-    color: black;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#tray {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
+/* ============================================
+   VPN
+   ============================================ */
 
 #custom-vpn {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    color: #6c7086;
 }
 
 #custom-vpn.connected {
-    color: #2ecc71;
-    background: #383c4a;
+    color: #a6e3a1;
+    background: linear-gradient(135deg, #1e1e2e 0%, #313244 100%);
 }
 
 #custom-vpn.disconnected {
-    color: #7c818c;
-    background: #383c4a;
+    color: #6c7086;
+}
+
+/* ============================================
+   TRAY
+   ============================================ */
+
+#tray {
+    color: #cdd6f4;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: #f38ba8;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
