@@ -204,3 +204,23 @@ window#waybar.hidden {
         color: #000000;
     }
 }
+
+#custom-vpn {
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 10px;
+    transition: none;
+    color: #ffffff;
+    background: #383c4a;
+}
+
+#custom-vpn.connected {
+    color: #2ecc71;
+    background: #383c4a;
+}
+
+#custom-vpn.disconnected {
+    color: #7c818c;
+    background: #383c4a;
+}
