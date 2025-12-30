@@ -5,6 +5,7 @@ packages=(
   python
   python-i3ipc
   git
+  base-devel
   pavucontrol
   nautilus
   alacritty
@@ -25,26 +26,27 @@ packages=(
   hyprlock
   kitty
   bluez
+  bluez-utils
   blueman
   exa
-  grim 
-  slurp 
+  grim
+  slurp
   wl-clipboard
 )
+
 function make_dirs(){
      echo "Creating Necessary Directories"
 
-     mkdir ~/Downloads
-     mkdir ~/Workspace
-     mkdir ~/Pictures 
+     mkdir -p ~/Downloads
+     mkdir -p ~/Workspace
+     mkdir -p ~/Pictures
 }
 
 function install_packages(){
      echo "Installing Necessary Packages"
 
-     sudo pacmaN -Syu
+     sudo pacman -Syu
      sudo pacman -S --noconfirm "${packages[@]}"
-
 }
 
 function copy_configs(){
@@ -60,18 +62,33 @@ function copy_configs(){
      cp compton.conf ~/.config
 }
 
-if [ $USER == 'root' ]
+function enable_bluetooth(){
+     echo "Enabling Bluetooth service"
+
+     sudo systemctl enable bluetooth.service
+     sudo systemctl start bluetooth.service
+}
+
+function install_yay(){
+     echo "Installing Yay AUR Helper"
+
+     git clone https://aur.archlinux.org/yay.git /tmp/yay
+     cd /tmp/yay
+     makepkg -si --noconfirm
+     cd -
+     rm -rf /tmp/yay
+}
+
+if [ "$USER" == 'root' ]
 then
 	echo "Don't run that script as root"
 else
 	echo "Kuruluyor ustam"
-     make_dirs()
-     install_packages()
-     copy_configs()
+     make_dirs
+     install_packages
+     install_yay
+     copy_configs
+     enable_bluetooth
 fi
 
-
-echo "Suggested Steps:
-     - Install Yay
-     - Enable Bluetooth
-"
+echo "Kurulum tamamlandi!"
